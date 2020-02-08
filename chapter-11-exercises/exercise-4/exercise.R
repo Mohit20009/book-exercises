@@ -3,6 +3,7 @@
 # Install the `"nycflights13"` package. Load (`library()`) the package.
 # You'll also need to load `dplyr`
 #install.packages("nycflights13")
+library("dplyr")
 library("nycflights13")
 
 # The data frame `flights` should now be accessible to you.
@@ -28,7 +29,7 @@ View(flights)
 
 
 # Make a histogram of the amount of time gained using the `hist()` function
-
+hist(flights$delayed_in_air)
 
 # On average, did flights gain or lose time?
 # Note: use the `na.rm = TRUE` argument to remove NA values from your aggregation
@@ -43,13 +44,15 @@ flights %>%
   pull(avg_delayed)
 
 # On average, did flights to SeaTac gain or loose time?
-summarise(to_sea, avg = mean(delayed_in_air,na.rm = T))
+flights %>% 
+  filter(dest == "SEA") %>% 
+  summarise(avg = mean(delayed_in_air,na.rm = T))
 
 # Consider flights from JFK to SEA. What was the average, min, and max air time
 # of those flights? Bonus: use pipes to answer this question in one statement
 # (without showing any other data)!
 flights %>% 
-  filter(dest=="SEA") %>% 
+  filter(origin =="JFK", dest=="SEA") %>% 
   summarise(avg_air_time= mean(air_time, na.rm = T), min_air_time = min(air_time, na.rm = T), max_air_time=max(air_time, na.rm = T))
 
   
