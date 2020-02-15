@@ -1,0 +1,30 @@
+---
+title: "R Mardown Demo"
+author: Mohit Jain
+output: html_document
+---
+
+## This is my report!
+
+I like writing reports 
+
+This is the code we will look at in class. Thisis just plain old Markdown that lets you rendertext in **bold** or _italics_. However, you canput in a block of R code, and the document willshow the code and the results!
+```{r example, echo=FALSE}
+library(knitr)
+numbers <- runif(1:100)  # make random numbers
+hist(numbers)  # show histogram of the numbers
+numbers_mean <- mean(numbers)
+
+img_url <- "![puppies](https://i.stack.imgur.com/yoXdn.png)"
+
+letters <- c("a", "b", "c", "d")
+numbers <- 1:4
+df <- data.frame(letters = letters, numbers = numbers)
+kable(df)
+```
+
+The mean of the numbers happens to be **`r numbers_mean`**.
+```{r other_cunk}
+print(numbers)
+
+```
