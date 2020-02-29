@@ -8,6 +8,7 @@ library("ggplot2")
 # Use `?diamonds` to review details about this data set
 ?diamonds
 
+diamonds_sample <- sample_n(diamonds,1000) 
 ## Position Adjustments
 
 # Draw a column (bar) chart of diamonds cuts by price, with each bar filled by 
